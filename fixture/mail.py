@@ -22,7 +22,7 @@ class MailHelper:
                         pop.dele(n+1)
                         pop.quit()
                         return msg.get_payload()
-            pop.close()
+            pop.quit()
             time.sleep(3)
         return None
 
