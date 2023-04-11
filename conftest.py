@@ -26,7 +26,7 @@ def app(request, config):
     # web_admin_config = load_config(request.config.getoption("--target"))['webadmin']
     if fixture is None or not fixture.is_valid():
         fixture = Application(browser=browser, config=config)
-    fixture.session.ensure_login(username=config["web"]['username'], password=config["web"]['password'])
+    fixture.session.ensure_login(username=config["webadmin"]["username"], password=config["webadmin"]["password"])
     return fixture
 
 @pytest.fixture(scope="session")
@@ -35,9 +35,9 @@ def config(request):
 
 @pytest.fixture(scope="session", autouse=True)
 def configure_server(request, config):
-    install_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
+    install_server_configuration(config["ftp"]["host"], config["ftp"]["username"], config["ftp"]["password"])
     def fin():
-        restore_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
+        restore_server_configuration(config["ftp"]["host"], config["ftp"]["username"], config["ftp"]["password"])
     request.addfinalizer(fin)
 
 def install_server_configuration(host, username, password):
