@@ -1,0 +1,14 @@
+[
+  {
+    "py/object": "model.project.Project",
+    "name": "name& =K.cM>B",
+    "description": "descr",
+    "status": "development"
+  },
+  {
+    "py/object": "model.project.Project",
+    "name": "name// F",
+    "description": "descrT",
+    "status": "obsolete"
+  }
+]
