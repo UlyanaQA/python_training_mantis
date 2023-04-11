@@ -1,7 +1,3 @@
-import re
-import string
-from random import random
-
 from selenium.webdriver.common.by import By
 
 from model.project import Project
