@@ -1,13 +1,12 @@
 from model.project import Project
 
-def test_add_project(app, json_projects):
+
+def test_add_new_project(app, json_projects):
     project = json_projects
-    old_projects = app.soap.get_projects_list(
+    old_projects = app.soap.get_project_list(
         username=app.config["webadmin"]["username"], password=app.config["webadmin"]["password"])
-    if project in old_projects:
-        app.project.delete_project_by_name(project)
     app.project.create_project(project)
-    new_projects = app.soap.get_projects_list(
+    new_projects = app.soap.get_project_list(
         username=app.config["webadmin"]["username"], password=app.config["webadmin"]["password"])
     assert len(old_projects) + 1 == len(new_projects)
     old_projects.append(project)
